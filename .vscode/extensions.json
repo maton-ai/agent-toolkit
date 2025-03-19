@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "EditorConfig.editorconfig", // default
+    "ms-python.python", // intellisense
+    "ms-python.flake8", // linting
+    "charliermarsh.ruff" // formatting
+  ]
+}

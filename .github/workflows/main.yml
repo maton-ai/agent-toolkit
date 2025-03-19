@@ -1,0 +1,118 @@
+name: CI
+
+on:
+  workflow_dispatch: {}
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  typescript-build:
+    name: Build - TypeScript
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./typescript
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.11.0
+
+      - name: Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Clean
+        run: pnpm run clean
+
+      - name: Lint
+        run: pnpm run lint
+
+      - name: Prettier
+        run: pnpm run prettier-check
+
+  modelcontextprotocol-build:
+    name: Build - Model Context Protocol
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./modelcontextprotocol
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.11.0
+
+      - name: Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Clean
+        run: pnpm run clean
+
+      - name: Lint
+        run: pnpm run lint
+
+      - name: Prettier
+        run: pnpm run prettier-check
+
+  python-build:
+    name: Build - Python
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./python
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install
+        run: make venv
+
+      - name: Build
+        run: |
+          set -x
+          source venv/bin/activate
+          rm -rf build dist *.egg-info
+          make build
+          python -m twine check dist/*
+
+      - name: Test
+        run: |
+          make venv
+          make test
