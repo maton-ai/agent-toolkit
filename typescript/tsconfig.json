@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Default",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "target": "es2022",
+    "moduleDetection": "force",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "module": "NodeNext"
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules", "examples"]
+}

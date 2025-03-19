@@ -1,16 +1,10 @@
-# Maton Agent Toolkit
+# Maton Agent Toolkit - TypeScript
 
-The Maton Agent Toolkit enables popular agent frameworks including Model Context Protocol (MCP) to integrate with Maton APIs through function calling. The library is not exhaustive of the entire Maton API. It includes support for Typescript.
-
-The toolkit was inspired by [Stripe Agent Toolkit][stripe-agent-toolkit], and its implementation shares similarities with the Stripe Agent Toolkit codebase.
-
-Included below are basic instructions, but refer to the [TypeScript](/typescript) package for more information.
+The Maton Agent Toolkit enables popular agent frameworks including LangChain and Vercel's AI SDK to integrate with Maton APIs through function calling. It also provides tooling to quickly integrate metered billing for prompt and completion token usage.
 
 You can get your API key on the [Maton console][api-keys].
 
-## TypeScript
-
-### Installation
+## Installation
 
 You don't need this source code unless you want to modify the package. If you just
 want to use the package run:
@@ -19,7 +13,7 @@ want to use the package run:
 npm install @maton/agent-toolkit
 ```
 
-#### Requirements
+### Requirements
 
 - Node 18+
 
@@ -67,4 +61,3 @@ Replace `YOUR_MATON_API_KEY` with your actual Maton API key. Or, you could set t
 | `salesforce`          | `list-contacts`                 |
 
 [api-keys]: https://maton.ai/api-keys
-[stripe-agent-toolkit]: https://github.com/stripe/agent-toolkit
