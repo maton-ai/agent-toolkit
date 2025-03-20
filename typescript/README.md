@@ -2,7 +2,7 @@
 
 The Maton Agent Toolkit enables popular agent frameworks including LangChain and Vercel's AI SDK to integrate with Maton APIs through function calling. It also provides tooling to quickly integrate metered billing for prompt and completion token usage.
 
-You can get your API key on the [Maton console][api-keys].
+To get started, get your API key in your [Maton Dashboard][api-keys] and check out [documentation][docs].
 
 ## Installation
 
@@ -25,20 +25,49 @@ The Maton Agent Toolkit also supports the [Model Context Protocol (MCP)](https:/
 
 To run the Maton MCP server using npx, use the following command:
 
-```bash
-# To use agent
-npx -y @maton/mcp hubspot --agent --api-key=YOUR_MATON_API_KEY
+### API Agent (Beta)
 
-# To set up all available actions
+```bash
+# To use API agent
+npx -y @maton/mcp hubspot --agent --api-key=YOUR_MATON_API_KEY
+```
+
+### API Action
+
+```bash
+# To set up all available API actions
 npx -y @maton/mcp hubspot --actions=all --api-key=YOUR_MATON_API_KEY
 
-# To set up all available actions
+# To set up all available API actions
 npx -y @maton/mcp hubspot --actions=create-contact,list-contacts --api-key=YOUR_MATON_API_KEY
 ```
 
-Replace `YOUR_MATON_API_KEY` with your actual Maton API key. Or, you could set the MATON_API_KEY in your environment variables.
+Replace `YOUR_MATON_API_KEY` with your actual Maton API key. Or, you could set the MATON_API_KEY in your environment variables. You can get your API key in your [Maton Dashboard][api-keys].
 
-## Available actions
+### Usage with Claude Desktop
+
+Add the following to your `claude_desktop_config.json`. See [here](https://modelcontextprotocol.io/quickstart/user) for more details.
+
+```
+{
+  "mcpServers": {
+    "maton": {
+      "command": "npx",
+      "args": [
+          "-y",
+          "@maton/mcp",
+          "hubspot",
+          "--actions=all",
+          "--api-key=YOUR_MATON_API_KEY"
+      ]
+    }
+  }
+}
+```
+
+Make sure to replace `YOUR_MATON_API_KEY` with your actual Maton API key. Alternatively, you could set the MATON_API_KEY in `env` variables. You can get your API key in your [Maton Dashboard][api-keys].
+
+## Available API actions
 
 | App                   | Action                          |
 | --------------------- | ------------------------------- |
@@ -61,3 +90,4 @@ Replace `YOUR_MATON_API_KEY` with your actual Maton API key. Or, you could set t
 | `salesforce`          | `list-contacts`                 |
 
 [api-keys]: https://maton.ai/api-keys
+[docs]: https://maton.ai/docs/api-reference

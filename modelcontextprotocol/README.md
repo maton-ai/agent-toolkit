@@ -2,24 +2,30 @@
 
 The Maton [Model Context Protocol](https://modelcontextprotocol.com/) server allows you to integrate with Maton APIs through function calling. This protocol supports various apps and actions to interact with different Maton services.
 
-You can get your API key on the [Maton console][api-keys].
+You can get your API key in your [Maton Dashboard][api-keys] and check out [documentation][docs].
 
 ## Setup
 
 To run the Maton MCP server using npx, use the following command:
 
-```bash
-# To use agent
-npx -y @maton/mcp hubspot --agent --api-key=YOUR_MATON_API_KEY
+### API Agent (Beta)
 
-# To set up all available actions
+```bash
+# To use API agent
+npx -y @maton/mcp hubspot --agent --api-key=YOUR_MATON_API_KEY
+```
+
+### API Action
+
+```bash
+# To set up all available API actions
 npx -y @maton/mcp hubspot --actions=all --api-key=YOUR_MATON_API_KEY
 
-# To set up all available actions
+# To set up all available API actions
 npx -y @maton/mcp hubspot --actions=create-contact,list-contacts --api-key=YOUR_MATON_API_KEY
 ```
 
-Make sure to replace `YOUR_MATON_API_KEY` with your actual Maton API key. Alternatively, you could set the MATON_API_KEY in your environment variables.
+Make sure to replace `YOUR_MATON_API_KEY` with your actual Maton API key. Alternatively, you could set the MATON_API_KEY in your environment variables. You can get your API key in your [Maton Dashboard][api-keys].
 
 ### Usage with Claude Desktop
 
@@ -33,14 +39,16 @@ Add the following to your `claude_desktop_config.json`. See [here](https://model
       "args": [
           "-y",
           "@maton/mcp",
-          "salesforce",
+          "hubspot",
           "--actions=all",
-          "--api-key=MATON_API_KEY"
+          "--api-key=YOUR_MATON_API_KEY"
       ]
     }
   }
 }
 ```
+
+Make sure to replace `YOUR_MATON_API_KEY` with your actual Maton API key. Alternatively, you could set the MATON_API_KEY in `env` variables. You can get your API key in your [Maton Dashboard][api-keys].
 
 ## Debugging the Server
 
@@ -66,7 +74,7 @@ npx @modelcontextprotocol/inspector node dist/index.js salesforce --actions=all 
 3. Open the MCP Inspector UI in your browser and click Connect to start the MCP server.
 4. You can see the list of tools you selected and test each tool individually.
 
-## Available actions
+## Available API actions
 
 | App                   | Action                          |
 | --------------------- | ------------------------------- |
@@ -89,3 +97,4 @@ npx @modelcontextprotocol/inspector node dist/index.js salesforce --actions=all 
 | `salesforce`          | `list-contacts`                 |
 
 [api-keys]: https://maton.ai/api-keys
+[docs]: https://maton.ai/docs/api-reference
