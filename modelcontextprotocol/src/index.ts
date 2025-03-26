@@ -19,7 +19,7 @@ type Options = {
 };
 
 const ACCEPTED_ARGS: string[] = ['agent', 'actions', 'api-key'];
-const ACCEPTED_APPS: string[] = ['hubspot', 'salesforce'];
+const ACCEPTED_APPS: string[] = ['hubspot', 'klaviyo', 'salesforce'];
 const ACCEPTED_ACTIONS: {[key: string]: string[]} = {
   hubspot: [
     'create-contact',
@@ -37,9 +37,24 @@ const ACCEPTED_ACTIONS: {[key: string]: string[]} = {
     'update-deal',
     'delete-deal',
   ],
+  klaviyo: [
+    'add-profiles-to-list',
+    'assign-template-to-campaign-message',
+    'create-campaign',
+    'create-list',
+    'create-profile',
+    'create-template',
+    'get-campaign-messages',
+    'get-campaign-send-job',
+    'get-campaigns',
+    'get-lists',
+    'get-profiles-for-list',
+    'get-profiles',
+    'get-templates',
+    'send-campaign',
+  ],
   salesforce: ['create-contact', 'get-contact', 'list-contacts'],
 };
-// const BUILTIN_ACTIONS: string[] = [];
 const BUILTIN_ACTIONS: string[] = ['check-connection', 'start-connection'];
 
 export function parseArgs(args: string[]): Options {
@@ -111,7 +126,7 @@ export function parseArgs(args: string[]): Options {
 }
 
 function getMethod(app: string, action: string) {
-  return `${app!}_${action.replace('-', '_')}`;
+  return `${app!}_${action.replaceAll('-', '_')}`;
 }
 
 function handleError(error: any) {

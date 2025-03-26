@@ -75,25 +75,39 @@ Make sure to replace `YOUR_MATON_API_KEY` with your actual Maton API key. Altern
 
 ## Available API actions
 
-| App                   | Action                          |
-| --------------------- | ------------------------------- |
-| `hubspot`             | `create-contact`                |
-| `hubspot`             | `get-contact`                   |
-| `hubspot`             | `list-contacts`                 |
-| `hubspot`             | `search-contacts`               |
-| `hubspot`             | `merge-contacts`                |
-| `hubspot`             | `update-contact`                |
-| `hubspot`             | `delete-contact`                |
-| `hubspot`             | `create-deal`                   |
-| `hubspot`             | `get-deal`                      |
-| `hubspot`             | `list-deals`                    |
-| `hubspot`             | `search-deals`                  |
-| `hubspot`             | `merge-deals`                   |
-| `hubspot`             | `update-deal`                   |
-| `hubspot`             | `delete-deal`                   |
-| `salesforce`          | `create-contact`                |
-| `salesforce`          | `get-contact`                   |
-| `salesforce`          | `list-contacts`                 |
+| App          | Action                                |
+| ------------ | ------------------------------------- |
+| `hubspot`    | `create-contact`                      |
+| `hubspot`    | `get-contact`                         |
+| `hubspot`    | `list-contacts`                       |
+| `hubspot`    | `search-contacts`                     |
+| `hubspot`    | `merge-contacts`                      |
+| `hubspot`    | `update-contact`                      |
+| `hubspot`    | `delete-contact`                      |
+| `hubspot`    | `create-deal`                         |
+| `hubspot`    | `get-deal`                            |
+| `hubspot`    | `list-deals`                          |
+| `hubspot`    | `search-deals`                        |
+| `hubspot`    | `merge-deals`                         |
+| `hubspot`    | `update-deal`                         |
+| `hubspot`    | `delete-deal`                         |
+| `klaviyo`    | `add-profiles-to-list`                |
+| `klaviyo`    | `assign-template-to-campaign-message` |
+| `klaviyo`    | `create-campaign`                     |
+| `klaviyo`    | `create-list`                         |
+| `klaviyo`    | `create-profile`                      |
+| `klaviyo`    | `create-template`                     |
+| `klaviyo`    | `get-campaign-messages`               |
+| `klaviyo`    | `get-campaign-send-job`               |
+| `klaviyo`    | `get-campaigns`                       |
+| `klaviyo`    | `get-lists`                           |
+| `klaviyo`    | `get-profiles-for-list`               |
+| `klaviyo`    | `get-profiles`                        |
+| `klaviyo`    | `get-templates`                       |
+| `klaviyo`    | `send-campaign`                       |
+| `salesforce` | `create-contact`                      |
+| `salesforce` | `get-contact`                         |
+| `salesforce` | `list-contacts`                       |
 
 [api-keys]: https://maton.ai/api-keys
 [docs]: https://maton.ai/docs/api-reference
