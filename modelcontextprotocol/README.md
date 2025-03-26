@@ -38,7 +38,7 @@ Add the following to your `claude_desktop_config.json`. See [here](https://model
       "command": "npx",
       "args": [
         "-y",
-        "@maton/mcp",
+        "@maton/mcp@latest",
         "hubspot",
         "--actions=all",
         "--api-key=YOUR_MATON_API_KEY"
