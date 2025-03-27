@@ -19,7 +19,7 @@ type Options = {
 };
 
 const ACCEPTED_ARGS: string[] = ['agent', 'actions', 'api-key'];
-const ACCEPTED_APPS: string[] = ['hubspot', 'klaviyo', 'salesforce'];
+const ACCEPTED_APPS: string[] = ['hubspot', 'jira', 'klaviyo', 'salesforce'];
 const ACCEPTED_ACTIONS: {[key: string]: string[]} = {
   hubspot: [
     'create-contact',
@@ -36,6 +36,17 @@ const ACCEPTED_ACTIONS: {[key: string]: string[]} = {
     'merge-deals',
     'update-deal',
     'delete-deal',
+  ],
+  jira: [
+    'list-clouds',
+    'get-issue',
+    'list-issues',
+    'add-comment-to-issue',
+    'list-comments',
+    'update-comment',
+    'list-projects',
+    'get-user',
+    'list-users',
   ],
   klaviyo: [
     'add-profiles-to-list',
