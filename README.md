@@ -91,6 +91,15 @@ Make sure to replace `YOUR_MATON_API_KEY` with your actual Maton API key. Altern
 | `hubspot`    | `merge-deals`                         |
 | `hubspot`    | `update-deal`                         |
 | `hubspot`    | `delete-deal`                         |
+| `jira`       | `list-clouds`                         |
+| `jira`       | `get-issue`                           |
+| `jira`       | `list-issues`                         |
+| `jira`       | `add-comment-to-issue`                |
+| `jira`       | `list-comments`                       |
+| `jira`       | `update-comment`                      |
+| `jira`       | `list-projects`                       |
+| `jira`       | `get-user`                            |
+| `jira`       | `list-users`                          |
 | `klaviyo`    | `add-profiles-to-list`                |
 | `klaviyo`    | `assign-template-to-campaign-message` |
 | `klaviyo`    | `create-campaign`                     |
