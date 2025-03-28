@@ -19,8 +19,67 @@ type Options = {
 };
 
 const ACCEPTED_ARGS: string[] = ['agent', 'actions', 'api-key'];
-const ACCEPTED_APPS: string[] = ['hubspot', 'jira', 'klaviyo', 'salesforce'];
+const ACCEPTED_APPS: string[] = [
+  'google-calendar',
+  'google-docs',
+  'google-drive',
+  'google-mail',
+  'google-sheet',
+  'hubspot',
+  'jira',
+  'klaviyo',
+  'salesforce',
+];
 const ACCEPTED_ACTIONS: {[key: string]: string[]} = {
+  'google-calendar': [
+    'create-event',
+    'delete-event',
+    'get-calendar',
+    'get-event',
+    'list-calendars',
+    'list-events',
+    'update-event',
+  ],
+  'google-docs': [
+    'append-text',
+    'create-document',
+    'find-document',
+    'get-document',
+  ],
+  'google-drive': [
+    'create-file',
+    'create-folder',
+    'delete-file',
+    'find-file',
+    'find-folder',
+    'get-file',
+    'list-files',
+  ],
+  'google-mail': [
+    'add-label-to-email',
+    'create-draft',
+    'find-email',
+    'list-labels',
+    'send-email',
+  ],
+  'google-sheet': [
+    'add-column',
+    'add-multiple-rows',
+    'clear-cell',
+    'clear-rows',
+    'create-spreadsheet',
+    'create-worksheet',
+    'delete-rows',
+    'delete-worksheet',
+    'find-row',
+    'get-cell',
+    'get-spreadsheet',
+    'get-values-in-range',
+    'list-worksheets',
+    'update-cell',
+    'update-multiple-rows',
+    'update-row',
+  ],
   hubspot: [
     'create-contact',
     'get-contact',

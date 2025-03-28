@@ -1,6 +1,6 @@
 {
   "name": "@maton/agent-toolkit",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "homepage": "https://github.com/maton/agent-toolkit",
   "scripts": {
     "build": "tsup",
