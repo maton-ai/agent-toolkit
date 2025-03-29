@@ -20,6 +20,11 @@ type Options = {
 
 const ACCEPTED_ARGS: string[] = ['agent', 'actions', 'api-key'];
 const ACCEPTED_APPS: string[] = [
+  'airtable',
+  'asana',
+  'aws',
+  'calendly',
+  'clickup',
   'google-calendar',
   'google-docs',
   'google-drive',
@@ -31,6 +36,31 @@ const ACCEPTED_APPS: string[] = [
   'salesforce',
 ];
 const ACCEPTED_ACTIONS: {[key: string]: string[]} = {
+  airtable: ['list-bases', 'list-records', 'list-tables'],
+  asana: [
+    'create-task',
+    'get-task',
+    'list-projects',
+    'list-tasks',
+    'list-workspaces',
+  ],
+  aws: ['get-s3-object', 'list-s3-buckets', 'list-s3-objects'],
+  calendly: [
+    'get-event',
+    'list-event-invitees',
+    'list-event-types',
+    'list-events',
+  ],
+  clickup: [
+    'create-task',
+    'delete-task',
+    'get-task',
+    'list-folders',
+    'list-lists',
+    'list-spaces',
+    'list-tasks',
+    'list-workspaces',
+  ],
   'google-calendar': [
     'create-event',
     'delete-event',
