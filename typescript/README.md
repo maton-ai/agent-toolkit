@@ -156,6 +156,7 @@ Make sure to replace `YOUR_MATON_API_KEY` with your actual Maton API key. Altern
 | `jira`            | `list-projects`                       |
 | `jira`            | `get-user`                            |
 | `jira`            | `list-users`                          |
+| `jotform`         | `list-submissions`                    |
 | `klaviyo`         | `add-profiles-to-list`                |
 | `klaviyo`         | `assign-template-to-campaign-message` |
 | `klaviyo`         | `create-campaign`                     |
@@ -170,9 +171,38 @@ Make sure to replace `YOUR_MATON_API_KEY` with your actual Maton API key. Altern
 | `klaviyo`         | `get-profiles`                        |
 | `klaviyo`         | `get-templates`                       |
 | `klaviyo`         | `send-campaign`                       |
+| `mailchimp`       | `get-campaign`                        |
+| `mailchimp`       | `search-campaign`                     |
+| `notion`          | `create-page`                         |
+| `notion`          | `find-page`                           |
+| `notion`          | `get-page`                            |
+| `outlook`         | `create-draft`                        |
+| `outlook`         | `find-email`                          |
+| `outlook`         | `send-email`                          |
+| `pipedrive`       | `search-people`                       |
 | `salesforce`      | `create-contact`                      |
 | `salesforce`      | `get-contact`                         |
 | `salesforce`      | `list-contacts`                       |
+| `shopify`         | `create-order`                        |
+| `shopify`         | `get-order`                           |
+| `shopify`         | `list-orders`                         |
+| `slack`           | `list-channels`                       |
+| `slack`           | `list-messages`                       |
+| `slack`           | `list-replies`                        |
+| `slack`           | `send-message`                        |
+| `stripe`          | `create-customer`                     |
+| `stripe`          | `create-invoice-item`                 |
+| `stripe`          | `create-invoice`                      |
+| `stripe`          | `delete-customer`                     |
+| `stripe`          | `get-customer`                        |
+| `stripe`          | `get-invoice`                         |
+| `stripe`          | `list-customers`                      |
+| `stripe`          | `list-invoices`                       |
+| `typeform`        | `get-form`                            |
+| `typeform`        | `list-forms`                          |
+| `typeform`        | `list-responses`                      |
+| `youtube`         | `list-videos`                         |
+| `youtube`         | `search-videos`                       |
 
 [api-keys]: https://maton.ai/api-keys
 [docs]: https://maton.ai/docs/api-reference
