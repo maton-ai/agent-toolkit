@@ -32,8 +32,18 @@ const ACCEPTED_APPS: string[] = [
   'google-sheet',
   'hubspot',
   'jira',
+  'jotform',
   'klaviyo',
+  'mailchimp',
+  'notion',
+  'outlook',
+  'pipedrive',
   'salesforce',
+  'shopify',
+  'slack',
+  'stripe',
+  'typeform',
+  'youtube',
 ];
 const ACCEPTED_ACTIONS: {[key: string]: string[]} = {
   airtable: ['list-bases', 'list-records', 'list-tables'],
@@ -137,6 +147,7 @@ const ACCEPTED_ACTIONS: {[key: string]: string[]} = {
     'get-user',
     'list-users',
   ],
+  jotform: ['list-submissions'],
   klaviyo: [
     'add-profiles-to-list',
     'assign-template-to-campaign-message',
@@ -153,7 +164,25 @@ const ACCEPTED_ACTIONS: {[key: string]: string[]} = {
     'get-templates',
     'send-campaign',
   ],
+  mailchimp: ['get-campaign', 'search-campaign'],
+  notion: ['create-page', 'find-page', 'get-page'],
+  outlook: ['create-draft', 'find-email', 'send-email'],
+  pipedrive: ['search-people'],
   salesforce: ['create-contact', 'get-contact', 'list-contacts'],
+  shopify: ['create-order', 'get-order', 'list-orders'],
+  slack: ['list-channels', 'list-messages', 'list-replies', 'send-message'],
+  stripe: [
+    'create-customer',
+    'create-invoice-item',
+    'create-invoice',
+    'delete-customer',
+    'get-customer',
+    'get-invoice',
+    'list-customers',
+    'list-invoices',
+  ],
+  typeform: ['get-form', 'list-forms', 'list-responses'],
+  youtube: ['list-videos', 'search-videos'],
 };
 const BUILTIN_ACTIONS: string[] = ['check-connection', 'start-connection'];
 
