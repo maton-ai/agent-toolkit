@@ -24,7 +24,8 @@ export const listResponsesParameters = z.object({
     .string()
     .describe(
       'Responses order in {fieldID},{asc|desc} format. You can use built-in submitted_at/staged_at/landed_at field IDs or any field ID from your typeform, possible directions are asc/desc. Default value is submitted_at,desc for completed responses, staged_at,desc for partial responses and landed_at,desc for started responses.'
-    ).optional(),
+    )
+    .optional(),
   q: z.string().describe('The search query').optional(),
   per_page: z.number().describe('The number of items per page').optional(),
 });

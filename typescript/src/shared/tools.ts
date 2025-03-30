@@ -149,6 +149,7 @@ import {
   checkConnectionPrompt as jotformCheckConnectionPrompt,
   startConnectionPrompt as jotformStartConnectionPrompt,
   transferAgentPrompt as jotformTransferAgentPrompt,
+  listFormsPrompt as jotformListFormsPrompt,
   listSubmissionsPrompt as jotformListSubmissionsPrompt,
 } from './prompts/jotform';
 import {
@@ -402,6 +403,7 @@ import {
   checkConnectionParameters as jotformCheckConnectionParameters,
   startConnectionParameters as jotformStartConnectionParameters,
   transferAgentParameters as jotformTransferAgentParameters,
+  listFormsParameters as jotformListFormsParameters,
   listSubmissionsParameters as jotformListSubmissionsParameters,
 } from './parameters/jotform';
 import {
@@ -1546,6 +1548,13 @@ const tools: Tool[] = [
     name: 'Jotform Transfer Agent',
     description: jotformTransferAgentPrompt,
     parameters: jotformTransferAgentParameters,
+    actions: {},
+  },
+  {
+    method: 'jotform_list_forms',
+    name: 'Jotform List Forms',
+    description: jotformListFormsPrompt,
+    parameters: jotformListFormsParameters,
     actions: {},
   },
   {
