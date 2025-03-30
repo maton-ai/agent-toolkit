@@ -147,7 +147,7 @@ const ACCEPTED_ACTIONS: {[key: string]: string[]} = {
     'get-user',
     'list-users',
   ],
-  jotform: ['list-submissions'],
+  jotform: ['list-forms', 'list-submissions'],
   klaviyo: [
     'add-profiles-to-list',
     'assign-template-to-campaign-message',

@@ -10,6 +10,10 @@ export const transferAgentPrompt = `
 Transfer to the Jotform agent.
 `;
 
+export const listFormsPrompt = `
+List forms in Jotform.
+`;
+
 export const listSubmissionsPrompt = `
 List form submissions in Jotform.
 `;
