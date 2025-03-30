@@ -162,6 +162,7 @@ Make sure to replace `YOUR_MATON_API_KEY` with your actual Maton API key. Altern
 | `jira`            | `list-projects`                       |
 | `jira`            | `get-user`                            |
 | `jira`            | `list-users`                          |
+| `jotform`         | `list-forms`                          |
 | `jotform`         | `list-submissions`                    |
 | `klaviyo`         | `add-profiles-to-list`                |
 | `klaviyo`         | `assign-template-to-campaign-message` |
