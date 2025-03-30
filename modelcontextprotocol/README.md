@@ -163,6 +163,7 @@ npx @modelcontextprotocol/inspector node dist/index.js salesforce --actions=all 
 | `jira`            | `list-projects`                       |
 | `jira`            | `get-user`                            |
 | `jira`            | `list-users`                          |
+| `jotform`         | `list-forms`                          |
 | `jotform`         | `list-submissions`                    |
 | `klaviyo`         | `add-profiles-to-list`                |
 | `klaviyo`         | `assign-template-to-campaign-message` |
