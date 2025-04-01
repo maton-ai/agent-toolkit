@@ -9,7 +9,7 @@
   "license": "MIT",
   "dependencies": {
     "@ai-sdk/openai": "^0.0.63",
-    "@maton/agent-toolkit": "latest",
+    "@maton/agent-toolkit": "^0.0.8",
     "ai": "^3.4.7",
     "dotenv": "^16.4.5"
   },

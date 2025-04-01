@@ -82,8 +82,8 @@ importers:
         specifier: ^0.0.63
         version: 0.0.63(zod@3.24.2)
       '@maton/agent-toolkit':
-        specifier: latest
-        version: 0.0.7(@langchain/core@0.3.43(openai@4.91.1(zod@3.24.2)))(@modelcontextprotocol/sdk@1.8.0)(ai@3.4.33(openai@4.91.1(zod@3.24.2))(react@19.1.0)(sswr@2.2.0(svelte@5.25.6))(svelte@5.25.6)(vue@3.5.13(typescript@5.8.2))(zod@3.24.2))(openai@4.91.1(zod@3.24.2))
+        specifier: ^0.0.8
+        version: 0.0.8(@langchain/core@0.3.43(openai@4.91.1(zod@3.24.2)))(@modelcontextprotocol/sdk@1.8.0)(ai@3.4.33(openai@4.91.1(zod@3.24.2))(react@19.1.0)(sswr@2.2.0(svelte@5.25.6))(svelte@5.25.6)(vue@3.5.13(typescript@5.8.2))(zod@3.24.2))(openai@4.91.1(zod@3.24.2))
       ai:
         specifier: ^3.4.7
         version: 3.4.33(openai@4.91.1(zod@3.24.2))(react@19.1.0)(sswr@2.2.0(svelte@5.25.6))(svelte@5.25.6)(vue@3.5.13(typescript@5.8.2))(zod@3.24.2)
@@ -98,17 +98,17 @@ importers:
   examples/langchain:
     dependencies:
       '@langchain/core':
-        specifier: ^0.3.6
+        specifier: ^0.3.43
         version: 0.3.43(openai@4.91.1(zod@3.24.2))
       '@langchain/langgraph':
-        specifier: ^0.2.22
+        specifier: ^0.2.62
         version: 0.2.62(@langchain/core@0.3.43(openai@4.91.1(zod@3.24.2)))(react@19.1.0)(zod-to-json-schema@3.24.5(zod@3.24.2))
       '@langchain/openai':
-        specifier: ^0.3.5
+        specifier: ^0.3.17
         version: 0.3.17(@langchain/core@0.3.43(openai@4.91.1(zod@3.24.2)))
       '@maton/agent-toolkit':
-        specifier: latest
-        version: 0.0.7(@langchain/core@0.3.43(openai@4.91.1(zod@3.24.2)))(@modelcontextprotocol/sdk@1.8.0)(ai@3.4.33(openai@4.91.1(zod@3.24.2))(react@19.1.0)(sswr@2.2.0(svelte@5.25.6))(svelte@5.25.6)(vue@3.5.13(typescript@5.8.2))(zod@3.24.2))(openai@4.91.1(zod@3.24.2))
+        specifier: ^0.0.8
+        version: 0.0.8(@langchain/core@0.3.43(openai@4.91.1(zod@3.24.2)))(@modelcontextprotocol/sdk@1.8.0)(ai@3.4.33(openai@4.91.1(zod@3.24.2))(react@19.1.0)(sswr@2.2.0(svelte@5.25.6))(svelte@5.25.6)(vue@3.5.13(typescript@5.8.2))(zod@3.24.2))(openai@4.91.1(zod@3.24.2))
       dotenv:
         specifier: ^16.4.5
         version: 16.4.7
@@ -123,8 +123,8 @@ importers:
   examples/openai:
     dependencies:
       '@maton/agent-toolkit':
-        specifier: latest
-        version: 0.0.7(@langchain/core@0.3.43(openai@4.91.1(zod@3.24.2)))(@modelcontextprotocol/sdk@1.8.0)(ai@3.4.33(openai@4.91.1(zod@3.24.2))(react@19.1.0)(sswr@2.2.0(svelte@5.25.6))(svelte@5.25.6)(vue@3.5.13(typescript@5.8.2))(zod@3.24.2))(openai@4.91.1(zod@3.24.2))
+        specifier: ^0.0.8
+        version: 0.0.8(@langchain/core@0.3.43(openai@4.91.1(zod@3.24.2)))(@modelcontextprotocol/sdk@1.8.0)(ai@3.4.33(openai@4.91.1(zod@3.24.2))(react@19.1.0)(sswr@2.2.0(svelte@5.25.6))(svelte@5.25.6)(vue@3.5.13(typescript@5.8.2))(zod@3.24.2))(openai@4.91.1(zod@3.24.2))
       dotenv:
         specifier: ^16.4.5
         version: 16.4.7
@@ -753,8 +753,8 @@ packages:
     peerDependencies:
       '@langchain/core': '>=0.2.21 <0.4.0'
 
-  '@maton/agent-toolkit@0.0.7':
-    resolution: {integrity: sha512-TJ33niyjqzxykhpEnCPQE2bto/95GI8ENUj8jET9UpetJSFYrQQUeoTxovgCxNGn+oqNROyjFfobY37klOzrrQ==}
+  '@maton/agent-toolkit@0.0.8':
+    resolution: {integrity: sha512-bspW414UzW9OgU9r9/llkJsTAO6fNCC/3hJT59znEDIn/EchR4hmQiZgIv0q0nwFff/H9WoVjCFCuRhPNCCCgQ==}
     engines: {node: '>=18'}
     peerDependencies:
       '@langchain/core': ^0.3.6
@@ -4078,7 +4078,7 @@ snapshots:
       '@langchain/core': 0.3.43(openai@4.91.1(zod@3.24.2))
       js-tiktoken: 1.0.19
 
-  '@maton/agent-toolkit@0.0.7(@langchain/core@0.3.43(openai@4.91.1(zod@3.24.2)))(@modelcontextprotocol/sdk@1.8.0)(ai@3.4.33(openai@4.91.1(zod@3.24.2))(react@19.1.0)(sswr@2.2.0(svelte@5.25.6))(svelte@5.25.6)(vue@3.5.13(typescript@5.8.2))(zod@3.24.2))(openai@4.91.1(zod@3.24.2))':
+  '@maton/agent-toolkit@0.0.8(@langchain/core@0.3.43(openai@4.91.1(zod@3.24.2)))(@modelcontextprotocol/sdk@1.8.0)(ai@3.4.33(openai@4.91.1(zod@3.24.2))(react@19.1.0)(sswr@2.2.0(svelte@5.25.6))(svelte@5.25.6)(vue@3.5.13(typescript@5.8.2))(zod@3.24.2))(openai@4.91.1(zod@3.24.2))':
     dependencies:
       '@langchain/core': 0.3.43(openai@4.91.1(zod@3.24.2))
       '@modelcontextprotocol/sdk': 1.8.0

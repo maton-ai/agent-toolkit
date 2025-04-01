@@ -5,8 +5,7 @@ import {ChatOpenAI} from '@langchain/openai';
 require('dotenv').config();
 
 const llm = new ChatOpenAI({
-  temperature: 0,
-  model: 'gpt-4o-mini',
+  model: 'o3-mini',
 });
 
 const matonAgentToolkit = new MatonAgentToolkit({
@@ -14,14 +13,12 @@ const matonAgentToolkit = new MatonAgentToolkit({
   actions: ['create-contact', 'list-contacts'],
 });
 
+const agent = createReactAgent({
+  llm,
+  tools: matonAgentToolkit.getTools(),
+});
+
 (async (): Promise<void> => {
-  const tools = matonAgentToolkit.getTools();
-
-  const agent = await createReactAgent({
-    llm,
-    tools,
-  });
-
   const stream = await agent.stream({
     messages: [
       ['human', 'create contact for a@b.co and list hubspot contacts'],
