@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@maton/agent-toolkit':
         specifier: latest
-        version: 0.0.7(@langchain/core@0.3.43(openai@4.91.1(zod@3.24.2)))(@modelcontextprotocol/sdk@1.8.0)(ai@4.2.10(react@19.1.0)(zod@3.24.2))(openai@4.91.1(zod@3.24.2))
+        version: 0.0.8(@langchain/core@0.3.43(openai@4.91.1(zod@3.24.2)))(@modelcontextprotocol/sdk@1.8.0)(ai@4.2.10(react@19.1.0)(zod@3.24.2))(openai@4.91.1(zod@3.24.2))
       '@modelcontextprotocol/sdk':
         specifier: ^1.4.1
         version: 1.8.0
@@ -428,8 +428,8 @@ packages:
     resolution: {integrity: sha512-DwiSUwmZqcuOn7j8SFdeOH1nvaUqG7q8qn3LhobdQYEg5PmjLgd2yLr2KzuT/YWMBfjkOR+Di5K6HEdFmouTxg==}
     engines: {node: '>=18'}
 
-  '@maton/agent-toolkit@0.0.7':
-    resolution: {integrity: sha512-TJ33niyjqzxykhpEnCPQE2bto/95GI8ENUj8jET9UpetJSFYrQQUeoTxovgCxNGn+oqNROyjFfobY37klOzrrQ==}
+  '@maton/agent-toolkit@0.0.8':
+    resolution: {integrity: sha512-bspW414UzW9OgU9r9/llkJsTAO6fNCC/3hJT59znEDIn/EchR4hmQiZgIv0q0nwFff/H9WoVjCFCuRhPNCCCgQ==}
     engines: {node: '>=18'}
     peerDependencies:
       '@langchain/core': ^0.3.6
@@ -3070,7 +3070,7 @@ snapshots:
     transitivePeerDependencies:
       - openai
 
-  '@maton/agent-toolkit@0.0.7(@langchain/core@0.3.43(openai@4.91.1(zod@3.24.2)))(@modelcontextprotocol/sdk@1.8.0)(ai@4.2.10(react@19.1.0)(zod@3.24.2))(openai@4.91.1(zod@3.24.2))':
+  '@maton/agent-toolkit@0.0.8(@langchain/core@0.3.43(openai@4.91.1(zod@3.24.2)))(@modelcontextprotocol/sdk@1.8.0)(ai@4.2.10(react@19.1.0)(zod@3.24.2))(openai@4.91.1(zod@3.24.2))':
     dependencies:
       '@langchain/core': 0.3.43(openai@4.91.1(zod@3.24.2))
       '@modelcontextprotocol/sdk': 1.8.0
