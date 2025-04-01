@@ -1,5 +1,3 @@
-import type {Context} from './configuration';
-
 class MatonClient {
   private headers: {'x-api-key': string};
 
@@ -84,12 +82,14 @@ class MatonClient {
 class MatonAPI {
   maton: MatonClient;
 
-  context: Context;
-
-  constructor(apiKey: string, context?: Context) {
-    const matonClient = new MatonClient(apiKey);
-    this.maton = matonClient;
-    this.context = context || {};
+  constructor(apiKey?: string) {
+    const envApiKey = process.env.MATON_API_KEY ?? '';
+    if (!apiKey && !envApiKey) {
+      throw new Error(
+        'Did not find MATON_API_KEY, please add an environment variable or pass it as a parameter'
+      );
+    }
+    this.maton = new MatonClient(apiKey || envApiKey);
   }
 
   async run(method: string, arg: any) {

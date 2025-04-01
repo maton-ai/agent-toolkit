@@ -9,14 +9,8 @@ class MatonAgentToolkit implements BaseToolkit {
 
   tools: MatonTool[];
 
-  constructor({
-    secretKey,
-    configuration,
-  }: {
-    secretKey: string;
-    configuration: Configuration;
-  }) {
-    this._maton = new MatonAPI(secretKey, configuration.context);
+  constructor(configuration: Configuration) {
+    this._maton = new MatonAPI(configuration.apiKey);
 
     const filteredTools = tools.filter((tool) =>
       isToolAllowed(tool, configuration)
