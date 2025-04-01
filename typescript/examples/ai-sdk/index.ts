@@ -8,7 +8,6 @@ const matonAgentToolkit = new MatonAgentToolkit({
   app: 'hubspot',
   actions: ['create-contact', 'list-contacts'],
 });
-console.log(JSON.stringify(matonAgentToolkit.getTools(), null, 2));
 
 (async () => {
   const result = await generateText({
@@ -16,8 +15,8 @@ console.log(JSON.stringify(matonAgentToolkit.getTools(), null, 2));
     tools: {
       ...matonAgentToolkit.getTools(),
     },
-    maxSteps: 5,
-    prompt: 'create contact for a@b.co and list hubspot contacts',
+    maxSteps: 10,
+    prompt: 'create contact for a@b.co and list contacts',
   });
 
   console.log(result.text);

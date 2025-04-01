@@ -15,7 +15,7 @@ const matonAgentToolkit = new MatonAgentToolkit({
   let messages: ChatCompletionMessageParam[] = [
     {
       role: 'user',
-      content: `create contact for a@b.co and list hubspot contacts`,
+      content: `create contact for a@b.co and list contacts`,
     },
   ];
 
@@ -32,6 +32,7 @@ const matonAgentToolkit = new MatonAgentToolkit({
     messages.push(message);
 
     if (message.tool_calls) {
+      console.log(JSON.stringify(message.tool_calls, null, 2));
       // eslint-disable-next-line no-await-in-loop
       const toolMessages = await Promise.all(
         message.tool_calls.map((tc) => matonAgentToolkit.handleToolCall(tc))

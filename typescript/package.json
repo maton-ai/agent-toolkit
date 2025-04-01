@@ -1,7 +1,7 @@
 {
   "name": "@maton/agent-toolkit",
-  "version": "0.0.8",
-  "homepage": "https://github.com/maton/agent-toolkit",
+  "version": "0.0.9",
+  "homepage": "https://github.com/maton-ai/agent-toolkit",
   "scripts": {
     "build": "tsup",
     "clean": "rm -rf langchain ai-sdk modelcontextprotocol openai",

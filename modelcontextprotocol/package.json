@@ -1,7 +1,7 @@
 {
   "name": "@maton/mcp",
-  "version": "0.0.8",
-  "homepage": "https://github.com/maton/agent-toolkit/tree/main/modelcontextprotocol",
+  "version": "0.0.9",
+  "homepage": "https://github.com/maton-ai/agent-toolkit/tree/main/modelcontextprotocol",
   "description": "A command line tool for setting up Maton MCP server",
   "bin": "dist/index.js",
   "files": [
