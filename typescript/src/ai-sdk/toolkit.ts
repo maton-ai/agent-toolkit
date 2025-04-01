@@ -1,6 +1,10 @@
 import MatonAPI from '../shared/api';
 import tools from '../shared/tools';
-import {isToolAllowed, type Configuration} from '../shared/configuration';
+import {
+  checkConfiguration,
+  isToolAllowed,
+  type Configuration,
+} from '../shared/configuration';
 import type {CoreTool} from 'ai';
 import MatonTool from './tool';
 
@@ -9,15 +13,11 @@ class MatonAgentToolkit {
 
   tools: {[key: string]: CoreTool};
 
-  constructor({
-    secretKey,
-    configuration,
-  }: {
-    secretKey: string;
-    configuration: Configuration;
-  }) {
-    this._maton = new MatonAPI(secretKey, configuration.context);
+  constructor(configuration: Configuration) {
+    this._maton = new MatonAPI(configuration.apiKey);
     this.tools = {};
+
+    checkConfiguration(configuration);
 
     const filteredTools = tools.filter((tool) =>
       isToolAllowed(tool, configuration)
