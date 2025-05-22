@@ -124,6 +124,7 @@ npx @modelcontextprotocol/inspector node dist/index.js salesforce --actions=all 
 | `google-mail`     | `find-email`                          |
 | `google-mail`     | `list-labels`                         |
 | `google-mail`     | `send-email`                          |
+| `google-mail`     | `remove-label-from-email`             |
 | `google-sheet`    | `add-column`                          |
 | `google-sheet`    | `add-multiple-rows`                   |
 | `google-sheet`    | `clear-cell`                          |

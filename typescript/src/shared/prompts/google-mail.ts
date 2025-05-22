@@ -29,3 +29,7 @@ This tool will list labels in Gmail.
 export const sendEmailPrompt = `
 This tool will send email in Gmail.
 `;
+
+export const removeLabelFromEmailPrompt = `
+This tool will remove label from an email in Gmail.
+`;

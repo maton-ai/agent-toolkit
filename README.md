@@ -123,6 +123,7 @@ Make sure to replace `YOUR_MATON_API_KEY` with your actual Maton API key. Altern
 | `google-mail`     | `find-email`                          |
 | `google-mail`     | `list-labels`                         |
 | `google-mail`     | `send-email`                          |
+| `google-mail`     | `remove-label-from-email`             |
 | `google-sheet`    | `add-column`                          |
 | `google-sheet`    | `add-multiple-rows`                   |
 | `google-sheet`    | `clear-cell`                          |

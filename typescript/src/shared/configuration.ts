@@ -82,6 +82,7 @@ const ACCEPTED_ACTIONS: {[key: string]: string[]} = {
     'find-email',
     'list-labels',
     'send-email',
+    'remove-label-from-email',
   ],
   'google-sheet': [
     'add-column',

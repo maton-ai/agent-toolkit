@@ -51,6 +51,13 @@ export const findEmailParameters = z.object({
 
 export const listLabelsParameters = z.object({});
 
+export const removeLabelFromEmailParameters = z.object({
+  message_id: z.string().describe('The ID of the message'),
+  label_ids: z
+    .array(z.string())
+    .describe('List of label IDs to remove from the message'),
+});
+
 export const sendEmailParameters = z.object({
   to: z.array(z.string()).describe('List of recipient emails'),
   subject: z.string().describe('The subject of the email'),

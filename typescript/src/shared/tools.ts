@@ -90,6 +90,7 @@ import {
   findEmailPrompt as googleMailFindEmailPrompt,
   listLabelsPrompt as googleMailListLabelsPrompt,
   sendEmailPrompt as googleMailSendEmailPrompt,
+  removeLabelFromEmailPrompt as googleMailRemoveLabelFromEmailPrompt,
 } from './prompts/google-mail';
 import {
   checkConnectionPrompt as googleSheetCheckConnectionPrompt,
@@ -344,6 +345,7 @@ import {
   findEmailParameters as googleMailFindEmailParameters,
   listLabelsParameters as googleMailListLabelsParameters,
   sendEmailParameters as googleMailSendEmailParameters,
+  removeLabelFromEmailParameters as googleMailRemoveLabelFromEmailParameters,
 } from './parameters/google-mail';
 import {
   checkConnectionParameters as googleSheetCheckConnectionParameters,
@@ -1030,6 +1032,13 @@ const tools: Tool[] = [
     name: 'Gmail Send Email',
     description: googleMailSendEmailPrompt,
     parameters: googleMailSendEmailParameters,
+    actions: {},
+  },
+  {
+    method: 'google-mail_remove_label_from_email',
+    name: 'Gmail Remove Label From Email',
+    description: googleMailRemoveLabelFromEmailPrompt,
+    parameters: googleMailRemoveLabelFromEmailParameters,
     actions: {},
   },
   {
