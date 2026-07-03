@@ -1,0 +1,16 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+  "name": "maton",
+  "description": "Connect and automate 150+ apps (Google Workspace, Microsoft 365, GitHub, Notion, Slack, HubSpot, and more) through a unified API.",
+  "repository": {
+    "url": "https://github.com/maton-ai/maton-agent-toolkit",
+    "source": "github"
+  },
+  "version": "0.1.0",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.maton.ai"
+    }
+  ]
+}

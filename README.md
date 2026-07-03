@@ -1,217 +1,79 @@
 # Maton Agent Toolkit
 
-The Maton Agent Toolkit enables popular agent frameworks including Model Context Protocol (MCP) to integrate with Maton APIs through function calling. The library is not exhaustive of the entire Maton API. It includes support for Typescript.
+This repo helps you connect AI agents to [Maton](https://maton.ai), which allows you to connect and automate 150+ apps (Google Workspace, Microsoft 365, GitHub, Notion, Slack, Airtable, HubSpot, and more) through a unified API.
 
-The toolkit was inspired by [Stripe Agent Toolkit][stripe-agent-toolkit], and its implementation shares similarities with the Stripe Agent Toolkit codebase.
+## Model Context Protocol (MCP)
 
-Included below are basic instructions, but refer to the [TypeScript](/typescript) package for more information.
+Maton hosts a remote MCP server at `https://mcp.maton.ai`. It supports both **OAuth** and **API key** (`Authorization: Bearer` header) authentication, so you can connect securely from any MCP client.
 
-To get started, get your API key in your [Maton Dashboard][api-keys] and check out [documentation][docs].
+- **Remote (OAuth):** point your MCP client at `https://mcp.maton.ai` and complete the OAuth flow in the browser.
+- **Local (API key):** run the local proxy with `npx -y @maton/mcp --api-key=YOUR_MATON_API_KEY`.
 
-## TypeScript
+See the [MCP package](/tools/modelcontextprotocol) for setup instructions, Docker usage, and the full list of tools.
 
-### Installation
+## Agent Toolkit
 
-You don't need this source code unless you want to modify the package. If you just
-want to use the package run:
+The Maton Agent Toolkit connects popular agent frameworks to the Maton MCP server through function calling. It discovers the tools available on `https://mcp.maton.ai` and exposes them in each framework's native format.
 
-```
-npm install @maton/agent-toolkit
-```
-
-#### Requirements
-
-- Node 18+
-
-### Usage
-
-## Model Context Protocol
-
-The Maton Agent Toolkit also supports the [Model Context Protocol (MCP)](https://modelcontextprotocol.com/).
-
-To run the Maton MCP server using npx, use the following command:
-
-### API Agent (Beta)
+- **TypeScript** ([`@maton/agent-toolkit`](/tools/typescript)) — LangChain, Vercel's AI SDK, OpenAI, MCP.
+- **Python** ([`maton-agent-toolkit`](/tools/python)) — OpenAI Agents SDK, LangChain, CrewAI, Strands.
 
 ```bash
-# To use API agent
-npx -y @maton/mcp hubspot --agent --api-key=YOUR_MATON_API_KEY
+npm install @maton/agent-toolkit      # TypeScript
+uv pip install maton-agent-toolkit    # Python
 ```
 
-### API Action
+## Plugins
+
+We ship plugins for popular agent harnesses that wire up the Maton MCP server for you. Each plugin registers the remote server at `https://mcp.maton.ai`, so once installed the Maton tools are available and you complete the OAuth flow in your browser on first use.
+
+### Claude Code
+
+Add this repo as a plugin marketplace, then install the Maton plugin:
 
 ```bash
-# To set up all available API actions
-npx -y @maton/mcp hubspot --actions=all --api-key=YOUR_MATON_API_KEY
-
-# To set up all available API actions
-npx -y @maton/mcp hubspot --actions=create-contact,list-contacts --api-key=YOUR_MATON_API_KEY
+claude plugin marketplace add maton-ai/maton-agent-toolkit
+claude plugin install maton@maton-plugins
 ```
 
-Replace `YOUR_MATON_API_KEY` with your actual Maton API key. Or, you could set the MATON_API_KEY in your environment variables. You can get your API key in your [Maton Dashboard][api-keys].
+### Cursor
 
-### Usage with Claude Desktop
+Install the Maton plugin directly from this repo:
 
-Add the following to your `claude_desktop_config.json`. See [here](https://modelcontextprotocol.io/quickstart/user) for more details.
-
+```bash
+/add-plugin maton-ai/maton-agent-toolkit
 ```
+
+### Codex
+
+Add this repo as a plugin marketplace, then install the Maton plugin:
+
+```bash
+codex plugin marketplace add maton-ai/maton-agent-toolkit
+codex plugin add maton@maton-plugins
+```
+
+### Gemini CLI
+
+1. Install [Gemini CLI](https://google-gemini.github.io/gemini-cli/#-installation).
+2. Install the Maton MCP extension: `gemini extensions install https://github.com/maton-ai/maton-agent-toolkit`.
+3. Start Gemini CLI and authenticate: `/mcp auth maton`.
+
+## Manual installation
+
+If you'd rather not use a plugin, register the Maton MCP server directly in your MCP client config (`.mcp.json` for Claude Code, `mcp.json` for Cursor):
+
+```json
 {
   "mcpServers": {
     "maton": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@maton/mcp@latest",
-        "hubspot",
-        "--actions=all",
-        "--api-key=YOUR_MATON_API_KEY"
-      ]
+      "type": "http",
+      "url": "https://mcp.maton.ai"
     }
   }
 }
 ```
 
-Make sure to replace `YOUR_MATON_API_KEY` with your actual Maton API key. Alternatively, you could set the MATON_API_KEY in `env` variables. You can get your API key in your [Maton Dashboard][api-keys].
+## License
 
-## Available API actions
-
-| App               | Action                                |
-| ----------------- | ------------------------------------- |
-| `airtable`        | `list-bases`                          |
-| `airtable`        | `list-records`                        |
-| `airtable`        | `list-tables`                         |
-| `asana`           | `create-task`                         |
-| `asana`           | `get-task`                            |
-| `asana`           | `list-projects`                       |
-| `asana`           | `list-tasks`                          |
-| `asana`           | `list-workspaces`                     |
-| `aws`             | `get-s3-object`                       |
-| `aws`             | `list-s3-buckets`                     |
-| `aws`             | `list-s3-objects`                     |
-| `calendly`        | `get-event`                           |
-| `calendly`        | `list-event-invitees`                 |
-| `calendly`        | `list-event-types`                    |
-| `calendly`        | `list-events`                         |
-| `clickup`         | `create-task`                         |
-| `clickup`         | `delete-task`                         |
-| `clickup`         | `get-task`                            |
-| `clickup`         | `list-folders`                        |
-| `clickup`         | `list-lists`                          |
-| `clickup`         | `list-spaces`                         |
-| `clickup`         | `list-tasks`                          |
-| `clickup`         | `list-workspaces`                     |
-| `google-calendar` | `create-event`                        |
-| `google-calendar` | `delete-event`                        |
-| `google-calendar` | `get-calendar`                        |
-| `google-calendar` | `get-event`                           |
-| `google-calendar` | `list-calendars`                      |
-| `google-calendar` | `list-events`                         |
-| `google-calendar` | `update-event`                        |
-| `google-docs`     | `append-text`                         |
-| `google-docs`     | `create-document`                     |
-| `google-docs`     | `find-document`                       |
-| `google-docs`     | `get-document`                        |
-| `google-drive`    | `create-file`                         |
-| `google-drive`    | `create-folder`                       |
-| `google-drive`    | `delete-file`                         |
-| `google-drive`    | `find-file`                           |
-| `google-drive`    | `find-folder`                         |
-| `google-drive`    | `get-file`                            |
-| `google-drive`    | `list-files`                          |
-| `google-mail`     | `add-label-to-email`                  |
-| `google-mail`     | `create-draft`                        |
-| `google-mail`     | `find-email`                          |
-| `google-mail`     | `list-labels`                         |
-| `google-mail`     | `send-email`                          |
-| `google-mail`     | `remove-label-from-email`             |
-| `google-sheet`    | `add-column`                          |
-| `google-sheet`    | `add-multiple-rows`                   |
-| `google-sheet`    | `clear-cell`                          |
-| `google-sheet`    | `clear-rows`                          |
-| `google-sheet`    | `create-spreadsheet`                  |
-| `google-sheet`    | `create-worksheet`                    |
-| `google-sheet`    | `delete-rows`                         |
-| `google-sheet`    | `delete-worksheet`                    |
-| `google-sheet`    | `find-row`                            |
-| `google-sheet`    | `get-cell`                            |
-| `google-sheet`    | `get-spreadsheet`                     |
-| `google-sheet`    | `get-values-in-range`                 |
-| `google-sheet`    | `list-worksheets`                     |
-| `google-sheet`    | `update-cell`                         |
-| `google-sheet`    | `update-multiple-rows`                |
-| `google-sheet`    | `update-row`                          |
-| `hubspot`         | `create-contact`                      |
-| `hubspot`         | `get-contact`                         |
-| `hubspot`         | `list-contacts`                       |
-| `hubspot`         | `search-contacts`                     |
-| `hubspot`         | `merge-contacts`                      |
-| `hubspot`         | `update-contact`                      |
-| `hubspot`         | `delete-contact`                      |
-| `hubspot`         | `create-deal`                         |
-| `hubspot`         | `get-deal`                            |
-| `hubspot`         | `list-deals`                          |
-| `hubspot`         | `search-deals`                        |
-| `hubspot`         | `merge-deals`                         |
-| `hubspot`         | `update-deal`                         |
-| `hubspot`         | `delete-deal`                         |
-| `jira`            | `list-clouds`                         |
-| `jira`            | `get-issue`                           |
-| `jira`            | `list-issues`                         |
-| `jira`            | `add-comment-to-issue`                |
-| `jira`            | `list-comments`                       |
-| `jira`            | `update-comment`                      |
-| `jira`            | `list-projects`                       |
-| `jira`            | `get-user`                            |
-| `jira`            | `list-users`                          |
-| `jotform`         | `list-forms`                          |
-| `jotform`         | `list-submissions`                    |
-| `klaviyo`         | `add-profiles-to-list`                |
-| `klaviyo`         | `assign-template-to-campaign-message` |
-| `klaviyo`         | `create-campaign`                     |
-| `klaviyo`         | `create-list`                         |
-| `klaviyo`         | `create-profile`                      |
-| `klaviyo`         | `create-template`                     |
-| `klaviyo`         | `get-campaign-messages`               |
-| `klaviyo`         | `get-campaign-send-job`               |
-| `klaviyo`         | `get-campaigns`                       |
-| `klaviyo`         | `get-lists`                           |
-| `klaviyo`         | `get-profiles-for-list`               |
-| `klaviyo`         | `get-profiles`                        |
-| `klaviyo`         | `get-templates`                       |
-| `klaviyo`         | `send-campaign`                       |
-| `mailchimp`       | `get-campaign`                        |
-| `mailchimp`       | `search-campaign`                     |
-| `notion`          | `create-page`                         |
-| `notion`          | `find-page`                           |
-| `notion`          | `get-page`                            |
-| `outlook`         | `create-draft`                        |
-| `outlook`         | `find-email`                          |
-| `outlook`         | `send-email`                          |
-| `pipedrive`       | `search-people`                       |
-| `salesforce`      | `create-contact`                      |
-| `salesforce`      | `get-contact`                         |
-| `salesforce`      | `list-contacts`                       |
-| `shopify`         | `create-order`                        |
-| `shopify`         | `get-order`                           |
-| `shopify`         | `list-orders`                         |
-| `slack`           | `list-channels`                       |
-| `slack`           | `list-messages`                       |
-| `slack`           | `list-replies`                        |
-| `slack`           | `send-message`                        |
-| `stripe`          | `create-customer`                     |
-| `stripe`          | `create-invoice-item`                 |
-| `stripe`          | `create-invoice`                      |
-| `stripe`          | `delete-customer`                     |
-| `stripe`          | `get-customer`                        |
-| `stripe`          | `get-invoice`                         |
-| `stripe`          | `list-customers`                      |
-| `stripe`          | `list-invoices`                       |
-| `typeform`        | `get-form`                            |
-| `typeform`        | `list-forms`                          |
-| `typeform`        | `list-responses`                      |
-| `youtube`         | `list-videos`                         |
-| `youtube`         | `search-videos`                       |
-
-[api-keys]: https://maton.ai/api-keys
-[docs]: https://maton.ai/docs/api-reference
-[stripe-agent-toolkit]: https://github.com/stripe/agent-toolkit
+[MIT](LICENSE)

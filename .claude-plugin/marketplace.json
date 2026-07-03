@@ -1,0 +1,18 @@
+{
+  "name": "maton-plugins",
+  "owner": {
+    "name": "Maton",
+    "email": "support@maton.ai"
+  },
+  "plugins": [
+    {
+      "name": "maton",
+      "source": "./providers/claude/plugin/",
+      "description": "Maton",
+      "version": "0.1.0",
+      "author": {
+        "name": "Maton"
+      }
+    }
+  ]
+}

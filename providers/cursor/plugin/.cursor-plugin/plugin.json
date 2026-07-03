@@ -1,0 +1,19 @@
+{
+  "name": "maton",
+  "description": "Maton plugin for Cursor for connecting and automating 150+ apps through the Maton MCP server.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Maton",
+    "url": "https://maton.ai"
+  },
+  "homepage": "https://maton.ai",
+  "repository": "https://github.com/maton-ai/maton-agent-toolkit",
+  "license": "MIT",
+  "keywords": [
+    "maton",
+    "automation",
+    "mcp",
+    "api",
+    "integrations"
+  ]
+}
