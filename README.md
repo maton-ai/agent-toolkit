@@ -59,6 +59,24 @@ codex plugin add maton@maton-plugins
 2. Install the Maton MCP extension: `gemini extensions install https://github.com/maton-ai/maton-agent-toolkit`.
 3. Start Gemini CLI and authenticate: `/mcp auth maton`.
 
+### OpenClaw
+
+Register the Maton MCP server in your `openclaw.json` under `mcp.servers`, then authenticate via OAuth in the browser on first use:
+
+```json
+{
+  "mcp": {
+    "servers": {
+      "maton": {
+        "url": "https://mcp.maton.ai",
+        "transport": "streamable-http",
+        "auth": "oauth"
+      }
+    }
+  }
+}
+```
+
 ## Manual installation
 
 If you'd rather not use a plugin, register the Maton MCP server directly in your MCP client config (`.mcp.json` for Claude Code, `mcp.json` for Cursor):
