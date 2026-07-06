@@ -34,7 +34,7 @@ class ToolkitCore(ABC, Generic[T]):
 
     def __init__(
         self,
-        api_key: str,
+        api_key: Optional[str] = None,
         configuration: Optional[Configuration] = None
     ):
         self._configuration = configuration or {}

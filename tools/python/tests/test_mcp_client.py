@@ -5,6 +5,12 @@ import pytest
 from maton_agent_toolkit.shared.mcp_client import MatonMcpClient
 
 
+@pytest.fixture(autouse=True)
+def _clear_maton_env(monkeypatch):
+    """Ensure MATON_API_KEY doesn't leak in from the real environment."""
+    monkeypatch.delenv("MATON_API_KEY", raising=False)
+
+
 class TestMatonMcpClient:
     """Tests for MatonMcpClient class."""
 
@@ -22,6 +28,25 @@ class TestMatonMcpClient:
         """Should raise error for a whitespace-only API key."""
         with pytest.raises(ValueError, match="Maton API key is required"):
             MatonMcpClient({"api_key": "   "})
+
+    def test_init_missing_key_raises(self):
+        """Should raise error when neither arg nor env var is set."""
+        with pytest.raises(ValueError, match="Maton API key is required"):
+            MatonMcpClient({})
+
+    def test_init_falls_back_to_env_var(self, monkeypatch):
+        """Should fall back to the MATON_API_KEY environment variable."""
+        monkeypatch.setenv("MATON_API_KEY", "maton_env_123")
+        client = MatonMcpClient({})
+        assert client._get_headers()["Authorization"] == "Bearer maton_env_123"
+
+    def test_explicit_key_overrides_env_var(self, monkeypatch):
+        """An explicit api_key should take precedence over the env var."""
+        monkeypatch.setenv("MATON_API_KEY", "maton_env_123")
+        client = MatonMcpClient({"api_key": "maton_explicit_456"})
+        assert (
+            client._get_headers()["Authorization"] == "Bearer maton_explicit_456"
+        )
 
     def test_get_tools_before_connect_raises(self):
         """Should raise if get_tools called before connect."""

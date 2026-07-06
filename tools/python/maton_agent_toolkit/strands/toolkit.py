@@ -114,7 +114,7 @@ class MatonAgentToolkit(ToolkitCore[List[StrandTool]]):
 
     def __init__(
         self,
-        api_key: str,
+        api_key: Optional[str] = None,
         configuration: Optional[Configuration] = None
     ):
         super().__init__(api_key, configuration)
@@ -145,7 +145,7 @@ class MatonAgentToolkit(ToolkitCore[List[StrandTool]]):
 
 
 async def create_maton_agent_toolkit(
-    api_key: str,
+    api_key: Optional[str] = None,
     configuration: Optional[Configuration] = None
 ) -> MatonAgentToolkit:
     """

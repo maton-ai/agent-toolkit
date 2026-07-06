@@ -1,6 +1,7 @@
 """Client for connecting to the Maton MCP server at mcp.maton.ai."""
 
 import json
+import os
 import warnings
 from contextlib import asynccontextmanager
 from typing import Optional, List, Dict, Any, AsyncGenerator
@@ -32,7 +33,7 @@ class McpTool(TypedDict, total=False):
 class McpClientConfig(TypedDict, total=False):
     """Configuration for MCP client."""
 
-    api_key: str
+    api_key: Optional[str]
     connection: Optional[str]
     mode: Optional[str]  # 'modelcontextprotocol' | 'toolkit'
 
@@ -48,14 +49,18 @@ class MatonMcpClient:
         self._tools: List[McpTool] = []
         self._initializer = AsyncInitializer()
 
-        self._validate_key(config.get("api_key"))
+        self._api_key = self._resolve_key(config.get("api_key"))
 
-    def _validate_key(self, key: Optional[str]) -> None:
-        """Validate that an API key was provided."""
-        if not key or not key.strip():
+    def _resolve_key(self, key: Optional[str]) -> str:
+        """Resolve the API key, falling back to the MATON_API_KEY env var."""
+        api_key = key or os.environ.get("MATON_API_KEY")
+        if not api_key or not api_key.strip():
             raise ValueError(
-                "Maton API key is required. Create one at https://maton.ai."
+                "Maton API key is required. Pass it as `api_key` or set the "
+                "MATON_API_KEY environment variable. "
+                "Create one at https://maton.ai."
             )
+        return api_key
 
     def _get_headers(self) -> Dict[str, str]:
         """Build headers for MCP requests."""
@@ -66,7 +71,7 @@ class MatonMcpClient:
         )
 
         headers = {
-            "Authorization": f"Bearer {self._config['api_key']}",
+            "Authorization": f"Bearer {self._api_key}",
             "User-Agent": user_agent,
         }
 
