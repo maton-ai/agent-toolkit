@@ -1,5 +1,6 @@
 """JSON Schema to Pydantic model conversion utilities."""
 
+import warnings
 from enum import Enum
 from typing import Any, Dict, List, Type, Tuple
 from pydantic import BaseModel, ConfigDict, Field, create_model
@@ -111,10 +112,16 @@ def json_schema_to_pydantic_model(
         return EmptyModel
 
     # Create model dynamically with extra="allow" config
-    model = create_model(
-        model_name,
-        __config__=ConfigDict(extra="allow"),  # type: ignore
-        **fields,  # type: ignore
-    )
+    with warnings.catch_warnings():
+        warnings.filterwarnings(
+            "ignore",
+            message='Field name .* shadows an attribute in parent "BaseModel"',
+            category=UserWarning,
+        )
+        model = create_model(
+            model_name,
+            __config__=ConfigDict(extra="allow"),  # type: ignore
+            **fields,  # type: ignore
+        )
 
     return model

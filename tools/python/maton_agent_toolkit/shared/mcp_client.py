@@ -175,8 +175,11 @@ class MatonMcpClient:
                 f"This may indicate a bug in your code."
             )
 
-        # Inject connection into args if present
-        final_args = {**args}
+        # Drop keys with None values. Framework tool wrappers (LangChain,
+        # CrewAI) validate input against a generated Pydantic args_schema
+        # whose optional fields default to None, then pass the full
+        # model_dump() here.
+        final_args = {k: v for k, v in args.items() if v is not None}
         if final_connection:
             final_args["connection"] = final_connection
 
