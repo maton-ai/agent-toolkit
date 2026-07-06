@@ -1,12 +1,12 @@
 """JSON Schema to Pydantic model conversion utilities."""
 
 from enum import Enum
-from typing import Any, Dict, List, Optional, Type, Tuple
+from typing import Any, Dict, List, Type, Tuple
 from pydantic import BaseModel, ConfigDict, Field, create_model
 
 
 def json_schema_to_pydantic_fields(
-    schema: Optional[Dict[str, Any]],
+    schema: Dict[str, Any] | None,
 ) -> Dict[str, Tuple[Any, Any]]:
     """
     Convert a JSON Schema to Pydantic field definitions.
@@ -80,7 +80,7 @@ def json_schema_to_pydantic_fields(
                 if description
                 else Field(default=None)
             )
-            python_type = Optional[python_type]
+            python_type = python_type | None
 
         fields[key] = (python_type, field_info)
 
@@ -88,7 +88,7 @@ def json_schema_to_pydantic_fields(
 
 
 def json_schema_to_pydantic_model(
-    schema: Optional[Dict[str, Any]], model_name: str = "DynamicModel"
+    schema: Dict[str, Any] | None, model_name: str = "DynamicModel"
 ) -> Type[BaseModel]:
     """
     Convert a JSON Schema to a Pydantic model class.

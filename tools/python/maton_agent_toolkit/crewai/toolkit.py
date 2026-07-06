@@ -1,7 +1,7 @@
 """Maton Agent Toolkit for CrewAI."""
 
 import asyncio
-from typing import List, Optional, Any, Type, Callable, Awaitable
+from typing import List, Any, Type, Callable, Awaitable
 
 from pydantic import BaseModel
 from crewai.tools import BaseTool
@@ -19,7 +19,7 @@ class MatonTool(BaseTool):
     method: str
     name: str = ""
     description: str = ""
-    args_schema: Optional[Type[BaseModel]] = None
+    args_schema: Type[BaseModel] | None = None
 
     def _run(self, **kwargs: Any) -> str:
         """Synchronous execution - wraps async call."""
@@ -58,8 +58,8 @@ class MatonAgentToolkit(ToolkitCore[List[MatonTool]]):
 
     def __init__(
         self,
-        api_key: Optional[str] = None,
-        configuration: Optional[Configuration] = None
+        api_key: str | None = None,
+        configuration: Configuration | None = None
     ):
         super().__init__(api_key, configuration)
 
@@ -101,8 +101,8 @@ class MatonAgentToolkit(ToolkitCore[List[MatonTool]]):
 
 
 async def create_maton_agent_toolkit(
-    api_key: Optional[str] = None,
-    configuration: Optional[Configuration] = None
+    api_key: str | None = None,
+    configuration: Configuration | None = None
 ) -> MatonAgentToolkit:
     """
     Factory function to create and initialize a MatonAgentToolkit.

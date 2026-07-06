@@ -1,15 +1,14 @@
 """Configuration types for Maton Agent Toolkit."""
 
-from typing import Optional
 from typing_extensions import TypedDict
 
 
 class Context(TypedDict, total=False):
     """Context for MCP connection."""
-    connection: Optional[str]
-    mode: Optional[str]
+    connection: str | None
+    mode: str | None
 
 
 class Configuration(TypedDict, total=False):
     """Configuration for Maton Agent Toolkit."""
-    context: Optional[Context]
+    context: Context | None

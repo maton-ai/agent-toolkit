@@ -1,7 +1,7 @@
 """Base class for all Maton Agent Toolkit implementations."""
 
 from abc import ABC, abstractmethod
-from typing import TypeVar, Generic, List, Optional, Dict, Any
+from typing import TypeVar, Generic, List, Dict, Any
 import warnings
 
 from .mcp_client import MatonMcpClient, McpTool
@@ -34,8 +34,8 @@ class ToolkitCore(ABC, Generic[T]):
 
     def __init__(
         self,
-        api_key: Optional[str] = None,
-        configuration: Optional[Configuration] = None
+        api_key: str | None = None,
+        configuration: Configuration | None = None
     ):
         self._configuration = configuration or {}
         context = self._configuration.get("context") or {}
@@ -146,7 +146,7 @@ class ToolkitCore(ABC, Generic[T]):
         self,
         method: str,
         args: Dict[str, Any],
-        connection: Optional[str] = None
+        connection: str | None = None
     ) -> str:
         """
         Execute a tool via MCP.

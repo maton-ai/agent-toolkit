@@ -2,7 +2,7 @@
 
 import asyncio
 import json
-from typing import List, Optional, Dict, Any, Callable, Awaitable
+from typing import List, Dict, Any, Callable, Awaitable
 
 from strands.tools.tools import PythonAgentTool as StrandTool
 
@@ -114,8 +114,8 @@ class MatonAgentToolkit(ToolkitCore[List[StrandTool]]):
 
     def __init__(
         self,
-        api_key: Optional[str] = None,
-        configuration: Optional[Configuration] = None
+        api_key: str | None = None,
+        configuration: Configuration | None = None
     ):
         super().__init__(api_key, configuration)
 
@@ -145,8 +145,8 @@ class MatonAgentToolkit(ToolkitCore[List[StrandTool]]):
 
 
 async def create_maton_agent_toolkit(
-    api_key: Optional[str] = None,
-    configuration: Optional[Configuration] = None
+    api_key: str | None = None,
+    configuration: Configuration | None = None
 ) -> MatonAgentToolkit:
     """
     Factory function to create and initialize a MatonAgentToolkit.

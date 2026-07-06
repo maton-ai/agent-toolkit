@@ -1,7 +1,7 @@
 """Async initialization utility for Maton Agent Toolkit."""
 
 import asyncio
-from typing import Callable, Awaitable, Optional
+from typing import Callable, Awaitable
 
 
 class AsyncInitializer:
@@ -12,7 +12,7 @@ class AsyncInitializer:
 
     def __init__(self) -> None:
         self._initialized: bool = False
-        self._init_future: Optional[asyncio.Future[None]] = None
+        self._init_future: asyncio.Future[None] | None = None
         self._lock: asyncio.Lock = asyncio.Lock()
 
     async def initialize(

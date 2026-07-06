@@ -4,7 +4,7 @@ import json
 import os
 import warnings
 from contextlib import asynccontextmanager
-from typing import Optional, List, Dict, Any, AsyncGenerator
+from typing import List, Dict, Any, AsyncGenerator
 from typing_extensions import TypedDict
 
 from mcp import ClientSession
@@ -33,9 +33,9 @@ class McpTool(TypedDict, total=False):
 class McpClientConfig(TypedDict, total=False):
     """Configuration for MCP client."""
 
-    api_key: Optional[str]
-    connection: Optional[str]
-    mode: Optional[str]  # 'modelcontextprotocol' | 'toolkit'
+    api_key: str | None
+    connection: str | None
+    mode: str | None  # 'modelcontextprotocol' | 'toolkit'
 
 
 class MatonMcpClient:
@@ -51,7 +51,7 @@ class MatonMcpClient:
 
         self._api_key = self._resolve_key(config.get("api_key"))
 
-    def _resolve_key(self, key: Optional[str]) -> str:
+    def _resolve_key(self, key: str | None) -> str:
         """Resolve the API key, falling back to the MATON_API_KEY env var."""
         api_key = key or os.environ.get("MATON_API_KEY")
         if not api_key or not api_key.strip():
@@ -139,7 +139,7 @@ class MatonMcpClient:
         self,
         name: str,
         args: Dict[str, Any],
-        connection: Optional[str] = None
+        connection: str | None = None
     ) -> str:
         """
         Execute a tool via MCP.

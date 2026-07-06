@@ -1,7 +1,7 @@
 """Maton Agent Toolkit for OpenAI Agents SDK."""
 
 import json
-from typing import List, Optional, Any
+from typing import List, Any
 
 from agents import FunctionTool
 from agents.run_context import RunContextWrapper
@@ -26,8 +26,8 @@ class MatonAgentToolkit(ToolkitCore[List[FunctionTool]]):
 
     def __init__(
         self,
-        api_key: Optional[str] = None,
-        configuration: Optional[Configuration] = None
+        api_key: str | None = None,
+        configuration: Configuration | None = None
     ):
         super().__init__(api_key, configuration)
 
@@ -92,8 +92,8 @@ class MatonAgentToolkit(ToolkitCore[List[FunctionTool]]):
 
 
 async def create_maton_agent_toolkit(
-    api_key: Optional[str] = None,
-    configuration: Optional[Configuration] = None
+    api_key: str | None = None,
+    configuration: Configuration | None = None
 ) -> MatonAgentToolkit:
     """
     Factory function to create and initialize a MatonAgentToolkit.
