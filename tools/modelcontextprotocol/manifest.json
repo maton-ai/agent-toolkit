@@ -1,0 +1,50 @@
+{
+  "dxt_version": "0.1",
+  "name": "@maton/mcp",
+  "display_name": "Maton",
+  "version": "0.1.0",
+  "description": "Connect and automate 150+ apps (Google Workspace, Microsoft 365, GitHub, Notion, Slack, HubSpot, and more) through a unified API.",
+  "author": {
+    "name": "Maton",
+    "email": "support@maton.ai"
+  },
+  "documentation": "https://maton.ai",
+  "user_config": {
+    "maton_api_key": {
+      "type": "string",
+      "title": "Maton API key",
+      "description": "Your Maton API key. Create one at https://maton.ai.",
+      "multiple": false,
+      "required": true
+    }
+  },
+  "server": {
+    "type": "node",
+    "entry_point": "dxt-dist/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/dxt-dist/index.js"],
+      "env": {
+        "MATON_API_KEY": "${user_config.maton_api_key}"
+      }
+    }
+  },
+  "tools": [
+    {"name": "whoami"},
+    {"name": "create_connection"},
+    {"name": "delete_connection"},
+    {"name": "list_connections"},
+    {"name": "get_connection"},
+    {"name": "search_apps"},
+    {"name": "search_actions"},
+    {"name": "get_action"},
+    {"name": "run_action"},
+    {"name": "api"}
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maton-ai/maton-agent-toolkit/tree/main"
+  },
+  "icon": "maton_icon.png"
+}

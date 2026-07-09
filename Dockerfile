@@ -1,11 +1,13 @@
 FROM node:22.12-alpine AS builder
 
-COPY modelcontextprotocol /app
-COPY modelcontextprotocol/tsconfig.json /tsconfig.json
+COPY tools/modelcontextprotocol /app
+COPY tools/modelcontextprotocol/tsconfig.json /tsconfig.json
 
 WORKDIR /app
 
 RUN --mount=type=cache,target=/root/.npm npm install
+
+RUN --mount=type=cache,target=/root/.npm npm run build
 
 RUN --mount=type=cache,target=/root/.npm-production npm ci --ignore-scripts --omit-dev
 

@@ -4,14 +4,93 @@ on:
   workflow_dispatch: {}
 
 jobs:
-  python-build:
-    name: Build for PyPi
+  npm-release:
+    name: Publish to npm
+    runs-on: ubuntu-latest
+    environment: npm
+
+    defaults:
+      run:
+        working-directory: ./tools/modelcontextprotocol
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.11.0
+
+      - name: Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Test
+        run: pnpm run test
+
+      - name: Publish
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  agent-toolkit-npm-release:
+    name: Publish agent-toolkit to npm
+    runs-on: ubuntu-latest
+    environment: npm
+
+    defaults:
+      run:
+        working-directory: ./tools/typescript
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.11.0
+
+      - name: Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Test
+        run: pnpm run test
+
+      - name: Publish
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  pypi-release:
+    name: Publish to PyPI
     runs-on: ubuntu-latest
     environment: pypi
 
     defaults:
       run:
-        working-directory: ./python
+        working-directory: ./tools/python
+
+    permissions:
+      id-token: write
 
     steps:
       - name: Checkout
@@ -22,48 +101,19 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install
-        run: make venv
+      - name: Install uv
+        uses: astral-sh/setup-uv@v2
 
       - name: Build
         run: |
           set -x
-          source venv/bin/activate
+          make venv
+          source .venv/bin/activate
           rm -rf build dist *.egg-info
           make build
           python -m twine check dist/*
 
-      - name: Test
-        run: |
-          make venv
-          make test
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: release-dists
-          path: ./python/dist/
-
-  python-release:
-    name: Publish to PyPi
-    runs-on: ubuntu-latest
-    environment: pypi
-    needs:
-      - python-build
-
-    defaults:
-      run:
-        working-directory: ./python
-
-    permissions:
-      id-token: write
-
-    steps:
-      - name: Retrieve distribution
-        uses: actions/download-artifact@v4
-        with:
-          name: release-dists
-          path: dist/
-
       - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: tools/python/dist/

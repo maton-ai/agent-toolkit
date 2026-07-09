@@ -1,0 +1,12 @@
+{
+  "name": "maton",
+  "description": "Maton plugin for Codex for connecting and automating 150+ apps through the Maton MCP server.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Maton",
+    "url": "https://maton.ai"
+  },
+  "repository": "https://github.com/maton-ai/maton-agent-toolkit",
+  "license": "MIT",
+  "mcpServers": "./.mcp.json"
+}

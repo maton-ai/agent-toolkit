@@ -1,0 +1,20 @@
+{
+  "name": "maton-plugins",
+  "interface": {
+    "displayName": "Maton Plugins"
+  },
+  "plugins": [
+    {
+      "name": "maton",
+      "source": {
+        "source": "local",
+        "path": "./providers/codex/plugin"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

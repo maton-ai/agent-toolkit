@@ -20,4 +20,4 @@ Once you have submitted a pull request, sign the CLA by clicking on the badge in
 <img width="910" alt="image" src="https://user-images.githubusercontent.com/62121649/198740836-70aeb322-5755-49fc-af55-93c8e8a39058.png">
 
 <br />
-Thanks for contributing to Stripe! :sparkles:
+Thanks for contributing to Maton! :sparkles:
