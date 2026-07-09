@@ -45,6 +45,12 @@ class MatonAgentToolkit extends ToolkitCore<ChatCompletionTool[]> {
   ): Promise<ChatCompletionToolMessageParam> {
     this.ensureInitialized();
 
+    if (toolCall.type !== 'function') {
+      throw new Error(
+        `Unsupported tool call type: ${toolCall.type}. Only function tool calls are supported.`
+      );
+    }
+
     const args = JSON.parse(toolCall.function.arguments);
     const response = await this.mcpClient.callTool(
       toolCall.function.name,

@@ -253,19 +253,21 @@ describe('jsonSchemaToZodShape', () => {
     const countResult = shape.count.safeParse('not-a-number');
     expect(countResult.success).toBe(false);
     if (!countResult.success) {
-      const issue = countResult.error.issues[0] as z.ZodInvalidTypeIssue;
+      const issue = countResult.error.issues[0];
       expect(issue.code).toBe('invalid_type');
-      expect(issue.expected).toBe('number');
-      expect(issue.received).toBe('string');
+      if (issue.code === 'invalid_type') {
+        expect(issue.expected).toBe('number');
+      }
     }
 
     const nameResult = shape.name.safeParse(42);
     expect(nameResult.success).toBe(false);
     if (!nameResult.success) {
-      const issue = nameResult.error.issues[0] as z.ZodInvalidTypeIssue;
+      const issue = nameResult.error.issues[0];
       expect(issue.code).toBe('invalid_type');
-      expect(issue.expected).toBe('string');
-      expect(issue.received).toBe('number');
+      if (issue.code === 'invalid_type') {
+        expect(issue.expected).toBe('string');
+      }
     }
 
     expect(shape.active.safeParse('yes').success).toBe(false);

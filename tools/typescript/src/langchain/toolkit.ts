@@ -14,13 +14,13 @@ class MatonTool extends StructuredTool {
   method: string;
   name: string;
   description: string;
-  schema: z.ZodObject<any, any, any, any>;
+  schema: z.ZodObject<any>;
 
   constructor(
     mcpClient: MatonMcpClient,
     method: string,
     description: string,
-    schema: z.ZodObject<any, any, any, any>
+    schema: z.ZodObject<any>
   ) {
     super();
     this.mcpClient = mcpClient;

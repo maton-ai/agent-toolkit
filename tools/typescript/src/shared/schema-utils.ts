@@ -57,18 +57,18 @@ export function jsonSchemaToZodShape(
         break;
       }
       case 'object':
-        zodType = z.record(z.unknown());
+        zodType = z.record(z.string(), z.unknown());
         break;
       default:
         zodType = z.unknown();
     }
 
-    if (prop.description) {
-      zodType = zodType.describe(prop.description);
-    }
-
     if (!required.has(key)) {
       zodType = zodType.optional().nullable();
+    }
+
+    if (prop.description) {
+      zodType = zodType.describe(prop.description);
     }
 
     shape[key] = zodType;
