@@ -1,6 +1,10 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "maton-agent-toolkit"
-version = "0.1.1"
+dynamic = ["version"]
 description = "Maton Agent Toolkit"
 readme = "README.md"
 license = {file = "LICENSE"}
@@ -36,6 +40,9 @@ dev = [
 "Bug Tracker" = "https://github.com/maton-ai/agent-toolkit/issues"
 "Source Code" = "https://github.com/maton-ai/agent-toolkit"
 "Documentation" = "https://maton.ai"
+
+[tool.setuptools.dynamic]
+version = {attr = "maton_agent_toolkit.shared.constants.VERSION"}
 
 [tool.setuptools.packages.find]
 include = ["maton_agent_toolkit*"]

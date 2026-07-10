@@ -48,7 +48,9 @@ jobs:
 
           mcp_version="$(node -p "require('./tools/modelcontextprotocol/package.json').version")"
           ts_version="$(node -p "require('./tools/typescript/package.json').version")"
-          py_version="$(grep -E '^version = ' tools/python/pyproject.toml | sed -E 's/^version = "(.+)"/\1/')"
+          # The Python package version is single-sourced from constants.VERSION
+          # (pyproject.toml declares it dynamically via setuptools).
+          py_version="$(grep -E '^VERSION = ' tools/python/maton_agent_toolkit/shared/constants.py | sed -E 's/^VERSION = "(.+)"/\1/')"
 
           check "@maton/mcp" "$mcp_version"
           check "@maton/agent-toolkit" "$ts_version"
