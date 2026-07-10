@@ -1,6 +1,6 @@
 {
   "name": "@maton/agent-toolkit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/maton-ai/agent-toolkit",
   "description": "Maton Agent Toolkit - connect popular agent frameworks (LangChain, Vercel AI SDK, OpenAI) to the Maton MCP server.",
   "scripts": {
@@ -102,6 +102,7 @@
     "langchain/**/*",
     "modelcontextprotocol/**/*",
     "openai/**/*",
+    "CHANGELOG.md",
     "LICENSE",
     "README.md",
     "package.json"

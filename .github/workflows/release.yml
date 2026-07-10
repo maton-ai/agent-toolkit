@@ -1,11 +1,64 @@
 name: Release
+run-name: ${{ github.event_name == 'workflow_dispatch' && inputs.tag_name || github.ref_name }}
 
 on:
-  workflow_dispatch: {}
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: "Tag to release, e.g. v0.1.2 (must match the committed package versions)"
+        required: true
+        type: string
 
 jobs:
+  prepare:
+    name: Validate tag against committed versions
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Resolve and validate version
+        id: version
+        env:
+          TAG: ${{ github.event_name == 'workflow_dispatch' && inputs.tag_name || github.ref_name }}
+        run: |
+          set -euo pipefail
+          if [[ ! "$TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$ ]]; then
+            echo "::error::Invalid tag '$TAG'. Must be v1.2.3 (optionally with a prerelease suffix, e.g. v1.2.3-rc.1)."
+            exit 1
+          fi
+          VERSION="${TAG#v}"
+
+          # package.json / pyproject.toml are the source of truth: the tag must
+          # match the committed versions. Bump those files (and commit) before
+          # tagging — CI never rewrites them.
+          check() {
+            local label="$1" actual="$2"
+            if [[ "$actual" != "$VERSION" ]]; then
+              echo "::error::$label version ($actual) does not match tag ($VERSION). Bump $label and commit before tagging."
+              exit 1
+            fi
+            echo "$label: $actual ✓"
+          }
+
+          mcp_version="$(node -p "require('./tools/modelcontextprotocol/package.json').version")"
+          ts_version="$(node -p "require('./tools/typescript/package.json').version")"
+          py_version="$(grep -E '^version = ' tools/python/pyproject.toml | sed -E 's/^version = "(.+)"/\1/')"
+
+          check "@maton/mcp" "$mcp_version"
+          check "@maton/agent-toolkit" "$ts_version"
+          check "maton-agent-toolkit (pyproject)" "$py_version"
+
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
   npm-release:
     name: Publish to npm
+    needs: prepare
     runs-on: ubuntu-latest
     environment: npm
 
@@ -44,6 +97,7 @@ jobs:
 
   agent-toolkit-npm-release:
     name: Publish agent-toolkit to npm
+    needs: prepare
     runs-on: ubuntu-latest
     environment: npm
 
@@ -82,6 +136,7 @@ jobs:
 
   pypi-release:
     name: Publish to PyPI
+    needs: prepare
     runs-on: ubuntu-latest
     environment: pypi
 

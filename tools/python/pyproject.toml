@@ -1,6 +1,6 @@
 [project]
 name = "maton-agent-toolkit"
-version = "0.1.0"
+version = "0.1.1"
 description = "Maton Agent Toolkit"
 readme = "README.md"
 license = {file = "LICENSE"}
