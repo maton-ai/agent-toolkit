@@ -38,11 +38,10 @@ claude plugin install maton@maton-plugins
 
 ### Cursor
 
-Install the Maton plugin directly from this repo:
-
-```bash
-/add-plugin maton-ai/agent-toolkit
-```
+1. Run `/add-plugin`.
+2. Click **Browse marketplace**.
+3. Paste the repo link: `https://github.com/maton-ai/agent-toolkit`.
+4. Install the plugin.
 
 ### Codex
 
