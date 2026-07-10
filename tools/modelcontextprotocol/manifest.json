@@ -44,7 +44,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/maton-ai/maton-agent-toolkit/tree/main"
+    "url": "https://github.com/maton-ai/agent-toolkit/tree/main"
   },
   "icon": "maton_icon.png"
 }

@@ -32,7 +32,7 @@ We ship plugins for popular agent harnesses that wire up the Maton MCP server fo
 Add this repo as a plugin marketplace, then install the Maton plugin:
 
 ```bash
-claude plugin marketplace add maton-ai/maton-agent-toolkit
+claude plugin marketplace add maton-ai/agent-toolkit
 claude plugin install maton@maton-plugins
 ```
 
@@ -41,7 +41,7 @@ claude plugin install maton@maton-plugins
 Install the Maton plugin directly from this repo:
 
 ```bash
-/add-plugin maton-ai/maton-agent-toolkit
+/add-plugin maton-ai/agent-toolkit
 ```
 
 ### Codex
@@ -49,14 +49,14 @@ Install the Maton plugin directly from this repo:
 Add this repo as a plugin marketplace, then install the Maton plugin:
 
 ```bash
-codex plugin marketplace add maton-ai/maton-agent-toolkit
+codex plugin marketplace add maton-ai/agent-toolkit
 codex plugin add maton@maton-plugins
 ```
 
 ### Gemini CLI
 
 1. Install [Gemini CLI](https://google-gemini.github.io/gemini-cli/#-installation).
-2. Install the Maton MCP extension: `gemini extensions install https://github.com/maton-ai/maton-agent-toolkit`.
+2. Install the Maton MCP extension: `gemini extensions install https://github.com/maton-ai/agent-toolkit`.
 3. Start Gemini CLI and authenticate: `/mcp auth maton`.
 
 ### OpenClaw

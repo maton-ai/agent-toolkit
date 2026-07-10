@@ -6,7 +6,7 @@
     "name": "Maton",
     "url": "https://maton.ai"
   },
-  "repository": "https://github.com/maton-ai/maton-agent-toolkit",
+  "repository": "https://github.com/maton-ai/agent-toolkit",
   "license": "MIT",
   "mcpServers": "./.mcp.json"
 }

@@ -33,8 +33,8 @@ dev = [
 ]
 
 [project.urls]
-"Bug Tracker" = "https://github.com/maton-ai/maton-agent-toolkit/issues"
-"Source Code" = "https://github.com/maton-ai/maton-agent-toolkit"
+"Bug Tracker" = "https://github.com/maton-ai/agent-toolkit/issues"
+"Source Code" = "https://github.com/maton-ai/agent-toolkit"
 "Documentation" = "https://maton.ai"
 
 [tool.setuptools.packages.find]

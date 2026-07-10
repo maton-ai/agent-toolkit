@@ -202,5 +202,5 @@ If you see `MatonAgentToolkit not initialized`:
 
 ## Getting Help
 
-- GitHub Issues: https://github.com/maton-ai/maton-agent-toolkit/issues
+- GitHub Issues: https://github.com/maton-ai/agent-toolkit/issues
 - Maton Dashboard: https://maton.ai
