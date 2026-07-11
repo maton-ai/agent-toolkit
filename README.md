@@ -52,12 +52,6 @@ codex plugin marketplace add maton-ai/agent-toolkit
 codex plugin add maton@maton-plugins
 ```
 
-### Gemini CLI
-
-1. Install [Gemini CLI](https://google-gemini.github.io/gemini-cli/#-installation).
-2. Install the Maton MCP extension: `gemini extensions install https://github.com/maton-ai/agent-toolkit`.
-3. Start Gemini CLI and authenticate: `/mcp auth maton`.
-
 ### OpenClaw
 
 Register the Maton MCP server in your `openclaw.json` under `mcp.servers`, then authenticate via OAuth in the browser on first use:
