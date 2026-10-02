@@ -64,7 +64,7 @@ Connect and automate 150+ apps with [Maton](https://maton.ai). Maton is an API g
 api(method="GET", path="/slack/api/conversations.list", params={ "limit": 100 })
 ```
 
-Pass a `connection` ID to select which connection to route through; otherwise the newest active connection is used. Most tools accept a `jq` argument to trim large responses.
+Pass a `connection` ID to select which connection to route through; otherwise the oldest active connection is used. Most tools accept a `jq` argument to trim large responses.
 
 ## Resources
 

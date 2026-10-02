@@ -54,7 +54,7 @@ Import from the framework-specific module you need:
 
 ### Context
 
-You can provide a default `connection` that all requests route through (sent as the `Maton-Connection` header). If omitted, Maton uses the newest active connection for the target app.
+You can provide a default `connection` that all requests route through (sent as the `Maton-Connection` header). If omitted, Maton uses the oldest active connection for the target app.
 
 ```python
 toolkit = await create_maton_agent_toolkit(

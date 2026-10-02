@@ -87,7 +87,7 @@ const server = await createMatonAgentToolkit({
 
 #### Context
 
-You can provide a default `connection` that all requests route through (sent as the `Maton-Connection` header). If omitted, Maton uses the newest active connection for the target app.
+You can provide a default `connection` that all requests route through (sent as the `Maton-Connection` header). If omitted, Maton uses the oldest active connection for the target app.
 
 ```typescript
 const toolkit = await createMatonAgentToolkit({
